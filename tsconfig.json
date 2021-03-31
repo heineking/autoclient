@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "target": "ES5",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "outDir": "./bin",
+    "declaration": true,
+    "types": [
+      "@types/node",
+      "@types/mocha",
+      "@types/chai"
+    ],
+  },
+  "exclude": [
+    "bin",
+    "node_modules"
+  ]
+}

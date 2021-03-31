@@ -1,0 +1,32 @@
+{
+  "name": "autoclient",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "build": "ts-node ./src/prebuild.ts && tsc",
+    "start": "node ./bin/index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^8.2.2",
+    "@types/ncp": "^2.0.4",
+    "@types/node": "^14.14.37",
+    "@types/string.prototype.matchall": "^4.0.0",
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "ncp": "^2.0.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.5.8",
+    "handlebars": "^4.7.7",
+    "node-fetch": "^2.6.1",
+    "path-to-regexp": "^6.2.0",
+    "string.prototype.matchall": "^4.0.4"
+  }
+}

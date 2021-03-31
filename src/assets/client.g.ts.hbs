@@ -1,0 +1,32 @@
+{{files.types}}
+{{files.client}}
+
+{{#requests}}
+export interface {{requestType}} {
+  {{#properties}}
+  {{name}}{{questionMark}}: {{type}};
+  {{/properties}}
+}
+
+export const {{functionName}} = (request{{questionMark}}: {{requestType}}, ...handlers: Handler[]): Promise<{{responseType}}> => {
+  const url = `{{url}}{{queryString}}`;
+  const body = prop(request, '{{bodyParam}}');
+
+  return send(fetch =>
+    fetch(url, createRequest({ method: '{{httpMethod}}', ...withBody(body) }))
+      .then(is.okay)
+      .then<{{responseType}}>(produces.{{produces}}), ...handlers);
+}
+
+{{/requests}}
+
+{{#models}}
+export interface {{name}}{{params}} {
+  {{#properties}}
+  {{name}}: {{type}};
+  {{/properties}}
+}
+
+{{/models}}
+
+export type Path = {{path}};
