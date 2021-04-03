@@ -95,4 +95,5 @@ export interface SchemaObject {
   allOf?: SchemaObject;
   properties?: Record<string, ReferenceObject | SchemaObject>;
   additionalProperties?: boolean | ReferenceObject | SchemaObject;
+  'x-nullable'?: true;
 }

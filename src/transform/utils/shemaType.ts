@@ -4,16 +4,19 @@ import { tsType, refname, unwrap } from './index';
 
 export const schemaType = (schema: OpenAPI2.Schema, config: Partial<Config> = {}): string => {
   config = configInit(config);
-  let type = 'void';
+  let type = '';
 
   visit(schema, {
     '/enum'({ value }) {
       type = value.join(' | ');
     },
     '/type'({ value }) {
-      if (type === 'void') {
+      if (!type) {
         type = tsType(value);
       }
+    },
+    '/x-nullable'() {
+      type = `${type}${type ? ' | ' : ''}null`;
     },
     '/%24ref'({ value: $ref }) {
       type = refname($ref);
@@ -28,6 +31,8 @@ export const schemaType = (schema: OpenAPI2.Schema, config: Partial<Config> = {}
       type = `${tsType(value)}[]`;
     }
   });
+
+  type = type || 'void';
 
   if (config.unwrap) {
     return unwrap(type) || 'any';
