@@ -109,7 +109,7 @@ function createUrl(path: string) {
 
 function requestFactory(props: Partial<Context.Request> = {}): Context.Request {
   return {
-    bodyParam: '__undef__',
+    bodyParam: '_',
     produces: '',
     functionName: '',
     httpMethod: '',
